@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLientInformation</title>
+    <title>compte</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -20,8 +20,8 @@
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-800"><a href=""></a>Your Information</li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Compte</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="../clientInfo/clientInfo.php">Your Information</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="#">Compte</a></li>
                 <li class="pr-5 hover:text-amber-800"><a href="">Transaction</a></li>
                 <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
@@ -34,61 +34,144 @@
     <!--header-end-->
 
 
-
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-black ">
-
-
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    ID:
-                </th>
-                <td class="px-6 py-4">
-                    1
-                </td>
+    <!--compte-information-->
+    <div class="relative overflow-x-auto shadow-md ">
+        <table class="w-full text-sm text-left rtl:text-right">
+            <thead class="text-xs text-black uppercase ">
 
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    UseNamer:
-                </th>
-                <td class="px-6 py-4">
-                    Brahim oubourrih
-                </td>
+                <tr class="border-b-2 border-slate-700">
+                    <th scope=" col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        RIB
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        balance
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        devise
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    </th>
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Date de Naissance:
-                </th>
-                <td class="px-6 py-4">
-                    2001-02-07
-                </td>
-
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Nationalite:
-                </th>
-                <td class="px-6 py-4">
-                    Maroc
-                </td>
-
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    GENRE:
-                </th>
-                <td class="px-6 py-4">
-                    homme
-                </td>
-
-            </tr>
+                </tr>
+            </thead>
+            <tbody>
 
 
+                <tr class="border-b-2 border-slate-700 ">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                </tr>
+
+                <tr class="border-b-2 border-slate-700 ">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                </tr>
+
+                <tr class="border-b-2 border-slate-700 ">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                </tr>
+
+                <tr class="border-b-2 border-slate-700 ">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                </tr>
+
+                <tr class="border-b-2 border-slate-700 ">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                </tr>
+
+
+            </tbody>
         </table>
     </div>
+
+    <!--compte-information-end-->
 
     <!--footer-->
 
@@ -196,8 +279,6 @@
         </div>
     </footer>
     <!--footer-end-->
-
-
 </body>
 
 </html>
