@@ -22,7 +22,7 @@
 
             <ul class="flex justify-around">
                 <li class="pr-5 hover:text-amber-800"><a href="#"></a>Your Information</li>
-                <li class="pr-5 hover:text-amber-800"><a href="#"
+                <li id="ajoutClient" class="pr-5 hover:text-amber-800"><a href="#"
                         class="px-5 py-1 rounded text-white bg-amber-800 hover:text-gray-500 hover:bg-transparent hover:border-amber-800 hover:border-solid hover:border-2">
                         Ajout Clients</a></li>
                 <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Comptes</a></li>
@@ -40,9 +40,107 @@
 
     <!--header-end-->
 
+    <!--add-form-->
+    <div id="formulaire" class="w-full py-10 hidden">
+
+
+        <form class="max-w-md mx-auto ">
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="email" name="floating_email" id="floating_email"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="floating_email"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
+                    address</label>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="password" name="floating_password" id="floating_password"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_password"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Password</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="password" name="repeat_password" id="floating_repeat_password"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_repeat_password"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Confirm
+                        password</label>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="floating_first_name" id="floating_first_name"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_first_name"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
+                        name</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="floating_last_name" id="floating_last_name"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_last_name"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
+                        name</label>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_phone"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">date
+                        de naissance</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="floating_company" id="floating_company"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_company"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">nationalite</label>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="floating_phone" id="floating_phone"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_phone"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">code
+                        Postal</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="text" name="floating_company" id="floating_company"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="floating_company"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">genre</label>
+                </div>
+            </div>
+
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="floating_email" id="floating_email"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="floating_email"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">address</label>
+            </div>
+            <button type="submit"
+                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+        </form>
+
+    </div>
+    <!--add-form-end-->
+
     <!-- client-info-admin-->
     <div class="relative overflow-x-auto shadow-md ">
-        <table class="w-full text-sm text-left rtl:text-right text-black">
+        <table class="w-full text-sm text-left rtl:text-right text-black  border-t-4 border-slate-700">
             <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-black">
 
 
@@ -56,7 +154,7 @@
                     <th scope="col" class="px-6 py-3">
                         prenom
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-10 py-3">
                         date de naissance
                     </th>
                     <th scope="col" class="px-6 py-3">
@@ -66,10 +164,22 @@
                         genre
                     </th>
                     <th scope="col" class="px-6 py-3">
+                        address
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        codePostal
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        tele
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        email
+                    </th>
+                    <th scope="col" class="px-20 py-3">
                     </th>
                     <th scope="col" class="px-6 py-3">
                     </th>
-                    <th scope="col" class="px-6 py-3">
+                    <th scope="col" class="px-20 py-3">
                     </th>
 
                 </tr>
@@ -99,40 +209,16 @@
                         HOMME
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                        </a>
+                        AGADIR
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
-                        </a>
+                        8088
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-                <tr class=" bg-white dark:bg-white">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        OUBOURRIH
+                        09876544
                     </td>
                     <td class="px-6 py-4">
-                        BRAHIM
-                    </td>
-                    <td class="px-6 py-4">
-                        2001-02-07
-                    </td>
-                    <td class="px-6 py-4">
-                        MAROC
-
-                    </td>
-                    <td class="px-6 py-4">
-                        HOMME
+                        exemple@gmail.com
                     </td>
                     <td class="px-6 py-4">
                         <a href="#" class="font-medium text-blue-600  hover:underline">show compte
@@ -171,6 +257,18 @@
                         HOMME
                     </td>
                     <td class="px-6 py-4">
+                        AGADIR
+                    </td>
+                    <td class="px-6 py-4">
+                        8088
+                    </td>
+                    <td class="px-6 py-4">
+                        09876544
+                    </td>
+                    <td class="px-6 py-4">
+                        exemple@gmail.com
+                    </td>
+                    <td class="px-6 py-4">
                         <a href="#" class="font-medium text-blue-600  hover:underline">show compte
                         </a>
                     </td>
@@ -207,6 +305,18 @@
                         HOMME
                     </td>
                     <td class="px-6 py-4">
+                        AGADIR
+                    </td>
+                    <td class="px-6 py-4">
+                        8088
+                    </td>
+                    <td class="px-6 py-4">
+                        09876544
+                    </td>
+                    <td class="px-6 py-4">
+                        exemple@gmail.com
+                    </td>
+                    <td class="px-6 py-4">
                         <a href="#" class="font-medium text-blue-600  hover:underline">show compte
                         </a>
                     </td>
@@ -219,6 +329,55 @@
                         </a>
                     </td>
                 </tr>
+
+
+                <tr class=" bg-white dark:bg-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        OUBOURRIH
+                    </td>
+                    <td class="px-6 py-4">
+                        BRAHIM
+                    </td>
+                    <td class="px-6 py-4">
+                        2001-02-07
+                    </td>
+                    <td class="px-6 py-4">
+                        MAROC
+
+                    </td>
+                    <td class="px-6 py-4">
+                        HOMME
+                    </td>
+                    <td class="px-6 py-4">
+                        AGADIR
+                    </td>
+                    <td class="px-6 py-4">
+                        8088
+                    </td>
+                    <td class="px-6 py-4">
+                        09876544
+                    </td>
+                    <td class="px-6 py-4">
+                        exemple@gmail.com
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
 
 
 
@@ -335,7 +494,7 @@
     <!--footer-end-->
 
 
-
+    <script src="script.js"></script>
 </body>
 
 </html>
