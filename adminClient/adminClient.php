@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CLientInformation</title>
+    <title>AdminClients</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
+
 
     <!--header-->
 
@@ -21,8 +22,14 @@
 
             <ul class="flex justify-around">
                 <li class="pr-5 hover:text-amber-800"><a href="#"></a>Your Information</li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Compte</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../transaction/transaction.php">Transaction</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="#"
+                        class="px-5 py-1 rounded text-white bg-amber-800 hover:text-gray-500 hover:bg-transparent hover:border-amber-800 hover:border-solid hover:border-2">
+                        Ajout Clients</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Comptes</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="../transaction/transaction.php">Transactions</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Agences</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Distrubuteur</a></li>
+
                 <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
                         Out</a></li>
@@ -33,71 +40,192 @@
 
     <!--header-end-->
 
+    <!-- client-info-admin-->
+    <div class="relative overflow-x-auto shadow-md ">
+        <table class="w-full text-sm text-left rtl:text-right text-black">
+            <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-black">
 
 
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-black ">
+                <tr class="bg-white dark:bg-white border-b border-slate-700">
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        nom
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        prenom
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        date de naissance
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        nationalité
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        genre
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
 
 
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    ID:
-                </th>
-                <td class="px-6 py-4">
-                    1
-                </td>
+                <tr class=" bg-white dark:bg-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        OUBOURRIH
+                    </td>
+                    <td class="px-6 py-4">
+                        BRAHIM
+                    </td>
+                    <td class="px-6 py-4">
+                        2001-02-07
+                    </td>
+                    <td class="px-6 py-4">
+                        MAROC
+
+                    </td>
+                    <td class="px-6 py-4">
+                        HOMME
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
 
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    UseNamer:
-                </th>
-                <td class="px-6 py-4">
-                    Brahim oubourrih
-                </td>
+                <tr class=" bg-white dark:bg-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Date de Naissance:
-                </th>
-                <td class="px-6 py-4">
-                    2001-02-07
-                </td>
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        OUBOURRIH
+                    </td>
+                    <td class="px-6 py-4">
+                        BRAHIM
+                    </td>
+                    <td class="px-6 py-4">
+                        2001-02-07
+                    </td>
+                    <td class="px-6 py-4">
+                        MAROC
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Nationalite:
-                </th>
-                <td class="px-6 py-4">
-                    Maroc
-                </td>
-
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    GENRE:
-                </th>
-                <td class="px-6 py-4">
-                    homme
-                </td>
-
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Address:
-                </th>
-                <td class="px-6 py-4">
-                    agdir...........
-                </td>
-
-            </tr>
+                    </td>
+                    <td class="px-6 py-4">
+                        HOMME
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
 
 
+                <tr class=" bg-white dark:bg-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        OUBOURRIH
+                    </td>
+                    <td class="px-6 py-4">
+                        BRAHIM
+                    </td>
+                    <td class="px-6 py-4">
+                        2001-02-07
+                    </td>
+                    <td class="px-6 py-4">
+                        MAROC
+
+                    </td>
+                    <td class="px-6 py-4">
+                        HOMME
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr class=" bg-white dark:bg-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        OUBOURRIH
+                    </td>
+                    <td class="px-6 py-4">
+                        BRAHIM
+                    </td>
+                    <td class="px-6 py-4">
+                        2001-02-07
+                    </td>
+                    <td class="px-6 py-4">
+                        MAROC
+
+                    </td>
+                    <td class="px-6 py-4">
+                        HOMME
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+
+
+            </tbody>
         </table>
     </div>
+    <!-- client-info-admin-end-->
 
     <!--footer-->
 
@@ -205,6 +333,7 @@
         </div>
     </footer>
     <!--footer-end-->
+
 
 
 </body>
