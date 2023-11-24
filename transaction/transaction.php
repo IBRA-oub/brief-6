@@ -21,8 +21,8 @@
 
             <ul class="flex justify-around">
                 <li class="pr-5 hover:text-amber-800"><a href="../clientInfo/clientInfo.php">Your Information</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="#">Compte</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../transaction/transaction.php">Transaction</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Compte</a></li>
+                <li class="pr-5 hover:text-amber-800"><a href="#">Transaction</a></li>
                 <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
                         Out</a></li>
@@ -34,52 +34,48 @@
     <!--header-end-->
 
 
-    <!--compte-information-->
+    <!--transaction-information-->
+
     <div class="relative overflow-x-auto shadow-md ">
-        <table class="w-full text-sm text-left rtl:text-right">
-            <thead class="text-xs text-black uppercase ">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase border-b-2 border-slate-700">
 
 
-                <tr class="border-b-2 border-slate-700">
-                    <th scope=" col" class="px-6 py-3">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
                         ID
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        RIB
+                        Montant
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        balance
+                        Devise
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        devise
+                        Type
                     </th>
-                    <th scope="col" class="px-6 py-3">
-                    </th>
+
 
                 </tr>
             </thead>
+
+
             <tbody>
-
-
                 <tr class="border-b-2 border-slate-700 ">
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
                         1
 
                     </td>
                     <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
+                        200.99
                     </td>
                     <td class="px-6 py-4">
                         DOLLAR
                     </td>
                     <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
+                        debit
                     </td>
+
                 </tr>
 
                 <tr class="border-b-2 border-slate-700 ">
@@ -88,19 +84,15 @@
 
                     </td>
                     <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
+                        200.99
                     </td>
                     <td class="px-6 py-4">
                         DOLLAR
                     </td>
                     <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
+                        debit
                     </td>
+
                 </tr>
 
                 <tr class="border-b-2 border-slate-700 ">
@@ -109,19 +101,15 @@
 
                     </td>
                     <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
+                        200.99
                     </td>
                     <td class="px-6 py-4">
                         DOLLAR
                     </td>
                     <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
+                        debit
                     </td>
+
                 </tr>
 
                 <tr class="border-b-2 border-slate-700 ">
@@ -130,20 +118,17 @@
 
                     </td>
                     <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
+                        200.99
                     </td>
                     <td class="px-6 py-4">
                         DOLLAR
                     </td>
                     <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
+                        debit
                     </td>
+
                 </tr>
+
 
                 <tr class="border-b-2 border-slate-700 ">
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
@@ -151,27 +136,40 @@
 
                     </td>
                     <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
+                        200.99
                     </td>
                     <td class="px-6 py-4">
                         DOLLAR
                     </td>
                     <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
+                        debit
                     </td>
+
+                </tr>
+
+
+                <tr class="border-b-2 border-slate-700 ">
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        200.99
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        debit
+                    </td>
+
                 </tr>
 
 
             </tbody>
         </table>
     </div>
-
-    <!--compte-information-end-->
+    <!--transaction-information-end-->
 
     <!--footer-->
 
