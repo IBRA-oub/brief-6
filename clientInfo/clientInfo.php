@@ -36,11 +36,11 @@
 
 
     <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <table class="w-full text-sm text-left rtl:text-right text-black ">
 
 
-            <tr class="bg-white dark:bg-blue-500">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white dark:bg-white">
+                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                     ID:
                 </th>
                 <td class="px-6 py-4">
@@ -49,8 +49,8 @@
 
 
             </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white dark:bg-white">
+                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                     UseNamer:
                 </th>
                 <td class="px-6 py-4">
@@ -58,8 +58,8 @@
                 </td>
 
             </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white dark:bg-white">
+                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                     Date de Naissance:
                 </th>
                 <td class="px-6 py-4">
@@ -67,8 +67,8 @@
                 </td>
 
             </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white dark:bg-white">
+                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                     Nationalite:
                 </th>
                 <td class="px-6 py-4">
@@ -76,8 +76,8 @@
                 </td>
 
             </tr>
-            <tr class="bg-white dark:bg-gray-800">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            <tr class="bg-white dark:bg-white">
+                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
                     GENRE:
                 </th>
                 <td class="px-6 py-4">
@@ -92,7 +92,7 @@
 
     <!--footer-->
 
-    <footer class="bg-white dark:bg-blue-200">
+    <footer class=" bg-white dark:bg-blue-200">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
             <div class="md:flex md:justify-between">
                 <div class="mb-6 md:mb-0">
@@ -102,7 +102,8 @@
                 </div>
                 <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">Resources
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">
+                            Resources
                         </h2>
                         <ul class="text-black dark:text-black font-medium">
                             <li class="mb-4">
@@ -114,7 +115,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">Follow us
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">
+                            Follow us
                         </h2>
                         <ul class="text-black dark:text-black font-medium">
                             <li class="mb-4">
@@ -126,7 +128,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">Legal</h2>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">Legal
+                        </h2>
                         <ul class="text-black dark:text-black font-medium">
                             <li class="mb-4">
                                 <a href="#" class="hover:underline">Privacy Policy</a>
