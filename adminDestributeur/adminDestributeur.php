@@ -28,9 +28,8 @@
                 <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/compte.php">Comptes</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminTransaction/adminTransaction.php">Transaction</a>
                 </li>
-                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">Agence</a></li>
-                <li class="pr-5 hover:text-amber-500"><a
-                        href="../adminDestributeur/adminDestributeur.php">Distributeurs</a>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminAgence/adminAgence.php">Agence</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">Distributeurs</a>
                 </li>
 
                 <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
@@ -62,23 +61,16 @@
                         class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">latitude</label>
                 </div>
             </div>
-            <div class="grid md:grid-cols-2 md:gap-6">
-                <div class="relative z-0 w-full mb-5 group">
-                    <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="codepostale" id="codepostale"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="codepostale"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">code
-                        postal</label>
-                </div>
-                <div class="relative z-0 w-full mb-5 group">
-                    <input type="tele" name="telephone" id="telephone"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="telephone"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">telephone</label>
-                </div>
+
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="codepostale" id="codepostale"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="codepostale"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">code
+                    postal</label>
             </div>
+
 
 
             <div class="relative z-0 w-full mb-5 group">
@@ -86,21 +78,17 @@
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                 <label for="address"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">address</label>
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    address
+
+                </label>
             </div>
 
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="email" name="floating_email" id="floating_email"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required />
-                <label for="floating_email"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
-                    address</label>
-            </div>
+
 
             <button type="submit"
                 class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">Ajout
-                Agence
+                Destributeur
             </button>
         </form>
 
@@ -127,15 +115,7 @@
                         code Postale
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        telephone
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                         address
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        email
-                    </th>
-                    <th scope="col" class="px-6 py-3">
                     </th>
                     <th scope="col" class="px-20 py-3">
                     </th>
@@ -162,62 +142,69 @@
                         8088
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        +212 12345543
+                        AGDIRe rue123
+                    </td>
 
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr class=" bg-white dark:bg-white border-b border-slate-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        123456123
+                    </td>
+                    <td class="px-6 py-4">
+                        1234561234
+                    </td>
+                    <td class="px-6 py-4">
+                        8088
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         AGDIRe rue123
                     </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
 
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr class=" bg-white dark:bg-white border-b border-slate-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        123456123
+                    </td>
+                    <td class="px-6 py-4">
+                        1234561234
+                    </td>
+                    <td class="px-6 py-4">
+                        8088
+                    </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        +212 12345543
-
-                    </td>
-                    <td class="px-6 py-4">
                         AGDIRe rue123
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
                     </td>
 
                     <td class="px-6 py-4">
@@ -248,64 +235,8 @@
                     <td class="px-6 py-4">
                         8088
                     </td>
-                    <td class="px-6 py-4">
-                        +212 12345543
-
-                    </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 whitespace-nowrap">
                         AGDIRe rue123
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        +212 12345543
-
-                    </td>
-                    <td class="px-6 py-4">
-                        AGDIRe rue123
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
                     </td>
 
                     <td class="px-6 py-4">
