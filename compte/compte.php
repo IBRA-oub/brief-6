@@ -20,10 +20,10 @@
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-800"><a href="../clientInfo/clientInfo.php">Your Information</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="#">Compte</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../transaction/transaction.php">Transaction</a></li>
-                <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
+                <li class="pr-5 hover:text-amber-500"><a href="../clientInfo/clientInfo.php">Your Information</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">Compte</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../transaction/transaction.php">Transaction</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
                         Out</a></li>
             </ul>

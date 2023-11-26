@@ -20,10 +20,11 @@
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-800"><a href="../clientInfo/clientInfo.php">Your Information</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Compte</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="#">Transaction</a></li>
-                <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
+                <li class="pr-5 hover:text-amber-500"><a href="../clientInfo/clientInfo.php">Your Information</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../compte/compte.php">Compte</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">Transaction</a>
+                </li>
+                <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
                         Out</a></li>
             </ul>
@@ -37,8 +38,8 @@
     <!--transaction-information-->
 
     <div class="relative overflow-x-auto shadow-md ">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase border-b-2 border-slate-700">
+        <table class="w-full text-sm text-left rtl:text-right text-black ">
+            <thead class="text-xs text-black uppercase border-b-2 border-slate-700">
 
 
                 <tr>
