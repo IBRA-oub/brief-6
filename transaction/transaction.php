@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>compte</title>
+    <title>transaction</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -12,8 +12,9 @@
 
     <!--header-->
 
-    <nav class="w-[100%] h-11 bg-slate-400 flex justify-between bg-gradient-to-r from-amber-200 to-blue-200">
-        <div class="ml-10 w-[10%] h-[60px]">
+    <nav
+        class="w-[100%] h-12 bg-slate-400 flex justify-between items-center bg-gradient-to-r from-amber-200 to-blue-200">
+        <div class="ml-10 w-[10%] h-[70px]">
 
             <img src="../image/logo.png" alt="" class="w-full h-[100%]">
         </div>
