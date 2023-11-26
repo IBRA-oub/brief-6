@@ -21,9 +21,9 @@
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  "></a> Information
+                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">Information</a>
                 </li>
-                <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php"></a> Role</li>
+                <li class="pr-5 hover:text-amber-500"><a href="../role/role.php"> Role</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminClinet/adminClinet.php">
                         Client</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/adminCompte.php">Comptes</a></li>
@@ -31,7 +31,7 @@
                 </li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminAgence/adminAgence.php">Agence</a></li>
                 <li class="pr-5 hover:text-amber-500">
-                    <aphp href="../adminDestributeur/adminDestributeur.php">Distributeurs</aphp>
+                    <a href="../adminDestributeur/adminDestributeur.php">Distributeurs</a>
                 </li>
 
                 <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"

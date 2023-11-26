@@ -23,8 +23,8 @@
 
             <ul class="flex justify-around">
 
-                <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php"></a> Information</li>
-                <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php"></a> Role</li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php">Information</a> </li>
+                <li class="pr-5 hover:text-amber-500"><a href="../role/role.php"> Role</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">
                         Client</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/adminCompte.php">Comptes</a></li>
@@ -32,7 +32,7 @@
                 </li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminAgence/adminAgence.php">Agence</a></li>
                 <li class="pr-5 hover:text-amber-500">
-                    <aph href="../adminDestributeur/adminDestributeur.php">Distributeurs</aph>
+                    <a href="../adminDestributeur/adminDestributeur.php">Distributeurs</a>
                 </li>
 
                 <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
