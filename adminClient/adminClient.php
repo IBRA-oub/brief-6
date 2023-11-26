@@ -13,10 +13,11 @@
 
     <!--header-->
 
-    <nav class="w-[100%] h-11 bg-slate-400 flex justify-between bg-gradient-to-r from-amber-200 to-blue-200">
-        <div class="ml-10 w-[10%] h-[60px]">
+    <nav
+        class="w-[100%] h-12 bg-slate-400 flex justify-between items-center  bg-gradient-to-r from-amber-200 to-blue-200">
+        <div class=" w-[10%] h-[70px] ">
 
-            <img src="../image/logo.png" alt="" class="w-full h-[100%]">
+            <img src="../image/logo.png" alt="" class="w-fit h-[100%]">
         </div>
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
@@ -140,7 +141,9 @@
                 </div>
             </div>
             <button type="submit"
-                class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+                class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">Ajout
+                CLient
+            </button>
         </form>
 
     </div>
@@ -233,59 +236,13 @@
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-                <tr class=" bg-white dark:bg-white">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        OUBOURRIH
-                    </td>
-                    <td class="px-6 py-4">
-                        BRAHIM
-                    </td>
-                    <td class="px-6 py-4">
-                        2001-02-07
-                    </td>
-                    <td class="px-6 py-4">
-                        MAROC
-
-                    </td>
-                    <td class="px-6 py-4">
-                        HOMME
-                    </td>
-                    <td class="px-6 py-4">
-                        AGADIR
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        09876544
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
                         </a>
                     </td>
                 </tr>
@@ -329,11 +286,13 @@
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        <a href="#"
+                            class="px-5 py-1 rounded   bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
                         </a>
                     </td>
                 </tr>
@@ -377,11 +336,63 @@
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        <a href="#"
+                            class="px-5 py-1 rounded   bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+
+                <tr class=" bg-white dark:bg-white">
+                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+
+                        1
+                    </th>
+                    <td class="px-6 py-4">
+                        OUBOURRIH
+                    </td>
+                    <td class="px-6 py-4">
+                        BRAHIM
+                    </td>
+                    <td class="px-6 py-4">
+                        2001-02-07
+                    </td>
+                    <td class="px-6 py-4">
+                        MAROC
+
+                    </td>
+                    <td class="px-6 py-4">
+                        HOMME
+                    </td>
+                    <td class="px-6 py-4">
+                        AGADIR
+                    </td>
+                    <td class="px-6 py-4">
+                        8088
+                    </td>
+                    <td class="px-6 py-4">
+                        09876544
+                    </td>
+                    <td class="px-6 py-4">
+                        exemple@gmail.com
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded   bg-amber-500 hover:bg-red-700  font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
                         </a>
                     </td>
                 </tr>
