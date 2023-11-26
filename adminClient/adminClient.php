@@ -25,11 +25,13 @@
                 <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php"></a> Information</li>
                 <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">
                         Client</a></li>
-                <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/compte.php">Comptes</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/adminCompte.php">Comptes</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminTransaction/adminTransaction.php">Transaction</a>
                 </li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminAgence/adminAgence.php">Agence</a></li>
-                <li class="pr-5 hover:text-amber-500"><a href="">Distributeurs</a></li>
+                <li class="pr-5 hover:text-amber-500">
+                    <aph href="../adminDestributeur/adminDestributeur.php">Distributeurs</aph>
+                </li>
 
                 <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log

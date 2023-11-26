@@ -18,7 +18,7 @@
 
             <img src="image/logo.png" alt="" class="w-full h-[100%]">
         </div>
-        <div class="mr-10 pt-2 font-bold text-white cursor-pointer hover:text-amber-800">
+        <div class="mr-10 pt-2 font-bold text-white cursor-pointer hover:text-amber-500">
             <a href="login/login.php" target="_blank">Log In</a>
         </div>
     </nav>
