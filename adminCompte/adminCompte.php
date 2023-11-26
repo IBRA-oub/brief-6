@@ -10,29 +10,27 @@
 
 <body>
 
-
     <!--header-->
 
-    <nav class="w-[100%] h-11 bg-slate-400 flex justify-between bg-gradient-to-r from-amber-200 to-blue-200">
-        <div class="ml-10 w-[10%] h-[60px]">
+    <nav
+        class="w-[100%] h-12 bg-slate-400 flex justify-between items-center  bg-gradient-to-r from-amber-200 to-blue-200">
+        <div class=" w-[10%] h-[70px] ">
 
-            <img src="../image/logo.png" alt="" class="w-full h-[100%]">
+            <img src="../image/logo.png" alt="" class="w-fit h-[100%]">
         </div>
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-800"><a href="#"></a>Your Information</li>
-                <li class="pr-5 hover:text-amber-800"><a href="#">
-                        Clients</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php"
-                        class="px-5 py-1 rounded text-white bg-amber-800 hover:text-gray-500 hover:bg-transparent hover:border-amber-800 hover:border-solid hover:border-2">Ajout
-                        Comptes</a>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php"></a> Information</li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminClient/adminClient.php">
+                        Client</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="#" class=" text-amber-500  ">Comptes</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminTransaction/adminTransaction.php">Transaction</a>
                 </li>
-                <li class="pr-5 hover:text-amber-800"><a href="../transaction/transaction.php">Transactions</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Agences</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Distrubuteur</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="">Agence</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="">Distributeurs</a></li>
 
-                <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
+                <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
                         Out</a></li>
             </ul>
@@ -42,9 +40,49 @@
 
     <!--header-end-->
 
+    <!--add-form-->
+    <div class="w-full py-10 ">
+        <form class="max-w-md mx-auto ">
+
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="rib" id="rib"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="rib"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">rib</label>
+            </div>
+
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="balance" id="balance"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="balance"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">balance</label>
+            </div>
+
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="devise" id="devise"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="devise"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">devise</label>
+            </div>
+
+            <button type="submit" class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none
+                focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+                dark:focus:ring-blue-800">Ajout
+                Compte
+            </button>
+        </form>
+
+    </div>
+    <!--add-form-end-->
+
+
+
     <!--compte-information-->
     <div class="relative overflow-x-auto shadow-md ">
-        <table class="w-full text-sm text-left rtl:text-right">
+        <table class="w-full text-sm text-left rtl:text-right border-t-4 border-slate-700">
             <thead class="text-xs text-black uppercase ">
 
 
@@ -93,40 +131,13 @@
                             transaction</a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
                         </a>
                     </td>
                 </tr>
@@ -151,40 +162,13 @@
                             transaction</a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
                         </a>
                     </td>
                 </tr>
@@ -209,11 +193,75 @@
                             transaction</a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">supprimer
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
                         </a>
                     </td>
                     <td class="px-6 py-4">
-                        <a href="#" class="px-5 py-1 rounded  bg-blue-800  font-medium text-white">mise a jour
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
+                        </a>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
+                        1
+
+                    </td>
+                    <td class="px-6 py-4">
+                        1234567898765432
+                    </td>
+                    <td class="px-6 py-4">
+                        2000.00
+                    </td>
+                    <td class="px-6 py-4">
+                        DOLLAR
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
+                            transaction</a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
+                        </a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="#"
+                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
                         </a>
                     </td>
                 </tr>

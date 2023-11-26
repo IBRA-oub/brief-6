@@ -12,22 +12,26 @@
 
     <!--header-->
 
-    <nav class="w-[100%] h-11 bg-slate-400 flex justify-between bg-gradient-to-r from-amber-200 to-blue-200">
-        <div class="ml-10 w-[10%] h-[60px]">
+    <nav
+        class="w-[100%] h-12 bg-slate-400 flex justify-between items-center  bg-gradient-to-r from-amber-200 to-blue-200">
+        <div class=" w-[10%] h-[70px] ">
 
-            <img src="../image/logo.png" alt="" class="w-full h-[100%]">
+            <img src="../image/logo.png" alt="" class="w-fit h-[100%]">
         </div>
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-800"><a href="#"></a>Your Information</li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Clients</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Comptes</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../transaction/transaction.php">Transactions</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Agences</a></li>
-                <li class="pr-5 hover:text-amber-800"><a href="../compte/compte.php">Distrubuteur</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  "></a> Information
+                </li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminClinet/adminClinet.php">
+                        Client</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/adminCompte.php">Comptes</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminTransaction/adminTransaction.php">Transaction</a>
+                </li>
+                <li class="pr-5 hover:text-amber-500"><a href="">Agence</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="">Distributeurs</a></li>
 
-                <li class="pr-5 hover:text-amber-800 "><a href="../home.php" target="_blank"
+                <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
                         Out</a></li>
             </ul>

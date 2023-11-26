@@ -22,13 +22,14 @@
         <div class="mr-10 pt-2 font-bold text-gray-500 cursor-pointer ">
 
             <ul class="flex justify-around">
-                <li class="pr-5 hover:text-amber-500"><a href="#"></a> Information</li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php"></a> Information</li>
                 <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">
                         Client</a></li>
-                <li class="pr-5 hover:text-amber-500"><a href="../compte/compte.php">Comptes</a></li>
-                <li class="pr-5 hover:text-amber-500"><a href="../transaction/transaction.php">Transaction</a></li>
-                <li class="pr-5 hover:text-amber-500"><a href="../compte/compte.php">Agence</a></li>
-                <li class="pr-5 hover:text-amber-500"><a href="../compte/compte.php">Distributeurs</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/compte.php">Comptes</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="../adminTransaction/adminTransaction.php">Transaction</a>
+                </li>
+                <li class="pr-5 hover:text-amber-500"><a href="">Agence</a></li>
+                <li class="pr-5 hover:text-amber-500"><a href="">Distributeurs</a></li>
 
                 <li class="pr-5 hover:text-amber-500 "><a href="../home.php" target="_blank"
                         class="px-5 py-1 rounded text-white bg-blue-400 hover:text-gray-500 hover:bg-transparent hover:border-blue-400 hover:border-solid hover:border-2">Log
@@ -155,7 +156,7 @@
             <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-black">
 
 
-                <tr class="bg-white dark:bg-white border-b border-slate-700">
+                <tr class="bg-white dark:bg-white border-b border-slate-700 ">
                     <th scope="col" class="px-6 py-3">
                         ID
                     </th>
@@ -198,7 +199,7 @@
             <tbody>
 
 
-                <tr class=" bg-white dark:bg-white">
+                <tr class=" bg-white dark:bg-white border-b border-slate-700">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
                         1
@@ -248,7 +249,7 @@
                 </tr>
 
 
-                <tr class=" bg-white dark:bg-white">
+                <tr class=" bg-white dark:bg-white border-b border-slate-700">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
                         1
@@ -298,7 +299,7 @@
                 </tr>
 
 
-                <tr class=" bg-white dark:bg-white">
+                <tr class=" bg-white dark:bg-white border-b border-slate-700">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
                         1
@@ -348,7 +349,7 @@
                 </tr>
 
 
-                <tr class=" bg-white dark:bg-white">
+                <tr class=" bg-white dark:bg-white border-b border-slate-700">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
                         1
