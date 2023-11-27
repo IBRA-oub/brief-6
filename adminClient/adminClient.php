@@ -24,7 +24,6 @@
             <ul class="flex justify-around">
 
                 <li class="pr-5 hover:text-amber-500"><a href="../adminInfo/adminInfo.php">Information</a> </li>
-                <li class="pr-5 hover:text-amber-500"><a href="../role/role.php"> Role</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">
                         Client</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/adminCompte.php">Comptes</a></li>
