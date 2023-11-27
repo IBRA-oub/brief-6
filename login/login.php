@@ -18,12 +18,12 @@ if(isset($_POST['login'])){
             header("Location:../adminInfo/adminInfo.php");
             
         } else {
-            echo"client";
+            header("Location:../clientInfo/clientInfo.php");
         }
-        // echo "<script>window.location.href='index.php';</script>";
+        
     }else{
-        // echo "<script>window.location.href='login.php';</script>";
-        echo "nooooooo";
+        
+        $error_message = "Identifiants incorrects. Veuillez réessayer.";
     }
     
 }
@@ -76,6 +76,9 @@ if(isset($_POST['login'])){
                                 class="focus:scale-110 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  block w-full p-2.5 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400 dark:text-amber-900  dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required="">
                         </div>
+                        <?php if(isset($error_message)): ?>
+                        <p style="color: red;"><?php echo $error_message; ?></p>
+                        <?php endif; ?>
 
                         <button type="submit" name="login"
                             class="w-full text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Log

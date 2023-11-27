@@ -46,7 +46,8 @@ $userData="CREATE TABLE IF NOT EXISTS `user`(
 $inserUserData="INSERT INTO `user` (username, email, date_de_naissance, password, adresse, code_postal, tele,genre, role)
 VALUE
 
-('yassine','yassine@gmail.com','2001-02-07','yassine123','mrakch','8088','0653560918','homme','admin')
+
+('brahim','brahim@gmail.com','2001-02-07','brahim123','agadir','8088','0653560918','homme','client')
 ";
 
 //$cnx->query($inserUserData);
