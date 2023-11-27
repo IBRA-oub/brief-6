@@ -1,3 +1,40 @@
+<?php
+include('../index.php');
+
+
+if(isset($_POST['login'])){
+    
+    $usernameValue=$_POST['username'];
+    $passwordValue=$_POST['password'];
+    
+    $query="SELECT * FROM user WHERE username='$usernameValue' AND password='$passwordValue'";
+    $result = mysqli_query($cnx,$query);
+
+    if(mysqli_num_rows($result)>0){
+        $row = mysqli_fetch_assoc($result);
+        
+        if ($row['role'] === "admin"){
+           
+            header("Location:../adminInfo/adminInfo.php");
+            
+        } else {
+            echo"client";
+        }
+        // echo "<script>window.location.href='index.php';</script>";
+    }else{
+        // echo "<script>window.location.href='login.php';</script>";
+        echo "nooooooo";
+    }
+    
+}
+
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,12 +60,12 @@
                         class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Login in to your account
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="#">
+                    <form class="space-y-4 md:space-y-6" method="post">
                         <div>
                             <label for="username"
                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                                 userName</label>
-                            <input type="text" name="name" id="username"
+                            <input type="text" name="username" id="username"
                                 class=" focus:scale-110 bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg   block w-full p-2.5 focus:outline-none dark:border-gray-600 dark:placeholder-gray-400 dark:text-amber-900  dark:focus:ring-blue-500 dark:focus:border-blue-500 "
                                 placeholder="Jack grelich" required="">
                         </div>
@@ -40,7 +77,7 @@
                                 required="">
                         </div>
 
-                        <button type="submit"
+                        <button type="submit" name="login"
                             class="w-full text-white bg-amber-600 hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-amber-600 dark:hover:bg-amber-700 dark:focus:ring-amber-800">Log
                             In
                         </button>
@@ -87,7 +124,8 @@
                         </ul>
                     </div>
                     <div>
-                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">Legal</h2>
+                        <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-amber-700">Legal
+                        </h2>
                         <ul class="text-black dark:text-black font-medium">
                             <li class="mb-4">
                                 <a href="#" class="hover:underline">Privacy Policy</a>
