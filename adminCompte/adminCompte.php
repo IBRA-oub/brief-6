@@ -1,3 +1,39 @@
+<?php
+include ('../index.php');
+
+if (isset($_POST['addAccount'])) {
+    $userId = $_POST['userId'];
+    
+    // echo $rib;
+    $rib=$_POST['rib'];
+    $devise = $_POST['devise'];
+    $balance = $_POST['balance'];
+
+    if (empty($userId) || empty($devise) || empty($balance)) {
+        echo "<script>window.alert('Inputs should not be empty');</script>";
+    } else {
+
+        $query = "
+            INSERT INTO compte (rib,  balance, devise, user_id)
+            VALUES ('$rib',  '$balance','$devise', '$userId');
+        ";
+
+        $run_query = mysqli_query($cnx, $query);
+        echo "<script>window.alert('Account Added succesfuly');</script>";
+
+    }
+}
+
+$showcompte="SELECT * FROM compte";
+$compteDataAdd=mysqli_query($cnx,$showcompte);
+
+$somthing="SELECT * FROM user";
+$userData=mysqli_query($cnx, $somthing);
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,10 +79,10 @@
 
     <!--add-form-->
     <div class="w-full py-10 ">
-        <form class="max-w-md mx-auto ">
+        <form method="POST" action="adminCompte.php" class="max-w-md mx-auto ">
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="rib" id="rib"
+                <input type="number" name="rib" id="rib"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                 <label for="rib"
@@ -54,7 +90,7 @@
             </div>
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="balance" id="balance"
+                <input type="number" name="balance" id="balance"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                 <label for="balance"
@@ -69,7 +105,18 @@
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">devise</label>
             </div>
 
-            <button type="submit" class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none
+            <select name="userId"
+                class="w-full pl-2 my-5  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                <option value="0">Choose User to Create An Account </option>
+                <?php
+
+                        foreach($userData as $user) {
+                            echo "<option value='" . $user['id'] . "' >" . $user['username'] . "</option>";
+                        }
+                    ?>
+            </select>
+
+            <button type="submit" name="addAccount" class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none
                 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
                 dark:focus:ring-blue-800">Ajout
                 Compte
@@ -110,27 +157,32 @@
                 </tr>
             </thead>
             <tbody>
-
-
+                <?php
+                foreach($compteDataAdd as $cpt){
+                ?>
                 <tr>
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
+                        <?php
+                        echo $cpt['id'];
+                        ?>
 
                     </td>
                     <td class="px-6 py-4">
-                        1234567898765432
+                        <?php
+                        echo $cpt['rib'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        2000.00
+                        <?php
+                        echo $cpt['balance'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        DOLLAR
+                        <?php
+                        echo $cpt['devise'];
+                        ?>
                     </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
+
                     <td class="px-6 py-4">
                         <a href="#"
                             class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
@@ -142,130 +194,10 @@
                         </a>
                     </td>
                 </tr>
+                <?php
+                }
+                ?>
 
-                <tr>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        1234567898765432
-                    </td>
-                    <td class="px-6 py-4">
-                        2000.00
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="affichageTransaction.php?compte_id=<?= $cmp['id']; ?>"
-                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show
-                            transaction</a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
 
 
             </tbody>

@@ -8,18 +8,19 @@ if(isset($_POST['ajout_client'])){
     $genre=$_POST['genre'];
     $codepostale=$_POST['codepostale'];
     $telephone=$_POST['telephone'];
+    $agence=$_POST['agenceid'];
     $address=$_POST['address'];
     $email=$_POST['email'];
     $password= password_hash($_POST['password'], PASSWORD_BCRYPT);
     
     
-    if(empty($nom) || empty($datenaissance) || empty($nationalite) || empty($genre) || empty($codepostale) || empty($telephone) || empty($address) || empty($email) || empty($password)){
+    if(empty($nom) || empty($datenaissance) || empty($nationalite) || empty($genre) || empty($codepostale) || empty($telephone) ||empty($agence) || empty($address) || empty($email) || empty($password)){
         echo "<script>alert('Tous les champs doivent être remplis')</script>";
     }else{
     
     
-    $sql="INSERT INTO `user`(`username`, `date_de_naissance`, `nationalite`, `genre`, `password`, `role`)
-     VALUES ('$nom', '$datenaissance', '$nationalite', '$genre', '$password', 'client')
+    $sql="INSERT INTO `user`(`username`, `date_de_naissance`, `nationalite`, `genre`, `password` , `role`,`agence_id`)
+     VALUES ('$nom', '$datenaissance', '$nationalite', '$genre', '$password', 'client','$agence')
      ";
 
      $result=mysqli_query($cnx,$sql);
@@ -28,11 +29,12 @@ if(isset($_POST['ajout_client'])){
 
         $user_id=mysqli_insert_id($cnx);
 
-        $runQuery="INSERT INTO `addresses` (`email`,`adresse`,`code_postal`,`tele`,`user_id`) VALUES 
-        ('$email','  $address','$codepostale','$telephone','$user_id')
+        $runQuery="INSERT INTO `addresses` (`email`,`adresse`,`code_postal`,`tele`,`user_id`)
+        VALUES ('$email','  $address','$codepostale','$telephone','$user_id')
      ";
 
         $resultAddress=mysqli_query($cnx,$runQuery);
+       
 
         if ($resultAddress) {
             echo "<script>window.alert('Data Inserted Successfully')</script>";
@@ -81,32 +83,6 @@ if(isset($_POST['submits'])){
     }
 }
 //=================================update=================================
-
-if (isset($_POST['submitu'])) {
-    $user_id = $_POST['user_id'];
-    
-
-    // Update the specified fields in the database
-    $updateQuery = "UPDATE user SET
-                    username = '$nom',
-                    date_de_naissance = '$datenaissance',
-                    nationalite = '$nationalite',
-                    genre = '$genre',
-                    password = '$password',
-                    email = '$email',
-                    address = '$address',
-                    code_postal = '$codepostale',
-                    tele = '$telephone'
-                    WHERE id = $user_id";
-
-    $updateResult = mysqli_query($cnx, $updateQuery);
-
-    if ($updateResult) {
-        echo "<script>window.alert('Mise à jour réussie')</script>";
-    } else {
-        echo "<script>window.alert('Erreur lors de la mise à jour : " . mysqli_error($cnx) . "')</script>";
-    }
-}
 
 
 
@@ -161,8 +137,6 @@ if (isset($_POST['submitu'])) {
     <!--add-form-->
     <div class="w-full py-10 ">
         <form class="max-w-md mx-auto " method="post">
-
-
             <div class="relative z-0 w-full mb-5 group">
                 <input type="text" name="username" id="username"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
@@ -188,11 +162,6 @@ if (isset($_POST['submitu'])) {
                         class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">nationalite</label>
                 </div>
             </div>
-
-
-
-
-
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="codepostale" id="codepostale"
@@ -218,12 +187,22 @@ if (isset($_POST['submitu'])) {
                 <label for="address"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">address</label>
             </div>
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="tel" name="telephone" id="telephone"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required />
-                <label for="telephone"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">telephone</label>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="tel" name="telephone" id="telephone"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="telephone"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">telephone</label>
+                </div>
+                <div class="relative z-0 w-full mb-5 group">
+                    <input type="number" name="agenceid" id="agenceid"
+                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" " required />
+                    <label for="agenceid"
+                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">agence
+                        id</label>
+                </div>
             </div>
             <div class="relative z-0 w-full mb-5 group">
                 <input type="email" name="email" id="floating_email"
@@ -294,10 +273,12 @@ if (isset($_POST['submitu'])) {
                             tele
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            agence_id
+                        </th>
+                        <th scope=" col" class="px-6 py-3">
                             email
                         </th>
-                        <th scope="col" class="px-20 py-3">
-                        </th>
+
                         <th scope="col" class="px-6 py-3">
                         </th>
                         <th scope="col" class="px-20 py-3">
@@ -364,13 +345,15 @@ if (isset($_POST['submitu'])) {
                         </td>
                         <td class="px-6 py-4">
                             <?php
-                        echo $user['email'];
+                        echo $user['agence_id'];
                         ?>
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                            </a>
+                            <?php
+                        echo $user['email'];
+                        ?>
                         </td>
+
                         <td class="px-6 py-4">
                             <form method="post" action="">
                                 <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
@@ -380,13 +363,11 @@ if (isset($_POST['submitu'])) {
                         </td>
 
                         <td class="px-6 py-4">
-                            <form action="" methode="post">
-                                <input type="hidden" name="user_id" id="user_id" value="<?php echo $user['id']; ?>">
-
-                                <button type="submit" name="submitu"
+                            <form methode="post" action="">
+                                <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
+                                <button type="submit" name="submitupdate"
                                     class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">
-                                    mise a
-                                    jour
+                                    update
                                 </button>
                             </form>
                         </td>
@@ -395,11 +376,6 @@ if (isset($_POST['submitu'])) {
                     <?php
                         }
                         ?>
-
-
-
-
-
                 </tbody>
             </table>
         </form>

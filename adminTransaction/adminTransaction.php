@@ -1,3 +1,38 @@
+<?php
+
+include ('../index.php');
+
+if (isset($_POST['addTransaction'])) {
+    $compteId = $_POST['compteId'];
+    
+    // echo $rib;
+    $montant=$_POST['montant'];
+    $devise = $_POST['devise'];
+    $type = $_POST['type'];
+
+    if (empty($compteId) ||empty($montant) || empty($devise) || empty($type)) {
+        echo "<script>window.alert('Inputs should not be empty');</script>";
+    } else {
+
+        $query = "
+            INSERT INTO transaction (montant,  devise, type,  compte_id )
+            VALUES ('$montant',  ' $devise',' $type ', '$compteId ');
+        ";
+
+        $run_query = mysqli_query($cnx, $query);
+        echo "<script>window.alert('Transaction Added succesfuly');</script>";
+
+    }
+}
+
+$showTransaction="SELECT * FROM transaction";
+$transactionDataAdd=mysqli_query($cnx,$showTransaction);
+
+$Comptesomthing="SELECT * FROM compte";
+$compteData=mysqli_query($cnx, $Comptesomthing);
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,10 +79,10 @@
 
     <!--add-form-->
     <div class="w-full py-10 ">
-        <form class="max-w-md mx-auto ">
+        <form method="POST" class="max-w-md mx-auto ">
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="montant" id="montant"
+                <input type="number" name="montant" id="montant"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                 <label for="montant"
@@ -70,8 +105,20 @@
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">type</label>
             </div>
 
-            <button type="submit"
-                class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">Ajout
+            <select name="compteId"
+                class="w-full pl-2 my-5  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                <option value="0">Choose User to Create An Account </option>
+                <?php
+
+                        foreach($compteData as $compte) {
+                            echo "<option value='" . $compte['id'] . "' >ID:"  . $compte['id'] . " RIB: " . $compte['rib'] . "</option>";
+                        }
+                    ?>
+            </select>
+
+            <button type="submit" name="addTransaction" class=" w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none
+                focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+                dark:focus:ring-blue-800">Ajout
                 Transactions
             </button>
         </form>
@@ -112,19 +159,30 @@
 
 
             <tbody>
+                <?php
+                foreach($transactionDataAdd as $trs){
+                ?>
                 <tr class="border-b border-slate-700">
                     <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
+                        <?php
+                        echo $trs['id'];
+                        ?>
 
                     </td>
                     <td class="px-6 py-4">
-                        200.99
+                        <?php
+                        echo $trs['montant'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        DOLLAR
+                        <?php
+                        echo $trs['devise'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        debit
+                        <?php
+                        echo $trs['type'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
                         <a href="#"
@@ -139,142 +197,9 @@
 
                 </tr>
 
-                <tr class="border-b border-slate-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        200.99
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        debit
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-
-                </tr>
-
-                <tr class="border-b border-slate-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        200.99
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        debit
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-
-                </tr>
-
-                <tr class="border-b border-slate-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        200.99
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        debit
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-
-                </tr>
-
-
-                <tr class="border-b border-slate-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        200.99
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        debit
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-
-                </tr>
-
-
-                <tr class="border-b border-slate-700">
-                    <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-black">
-                        1
-
-                    </td>
-                    <td class="px-6 py-4">
-                        200.99
-                    </td>
-                    <td class="px-6 py-4">
-                        DOLLAR
-                    </td>
-                    <td class="px-6 py-4">
-                        debit
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
+                <?php
+                }
+                ?>
 
             </tbody>
         </table>
