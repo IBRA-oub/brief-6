@@ -1,3 +1,11 @@
+<?php
+
+include ('../index.php');
+
+$showclient =getclients();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -37,70 +45,82 @@
 
 
 
-    <div class="relative overflow-x-auto">
-        <table class="w-full text-sm text-left rtl:text-right text-black ">
+    <div class="relative overflow-x-auto shadow-md ">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
 
 
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    ID:
-                </th>
-                <td class="px-6 py-4">
-                    1
-                </td>
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        ID
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        nom
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        prenom
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        date de naissance
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        nationalité
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        genre
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                    </th>
 
+                </tr>
+            </thead>
+            <tbody>
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    UseNamer:
-                </th>
-                <td class="px-6 py-4">
-                    Brahim oubourrih
-                </td>
+                <?php 
+                foreach ($showclient as $clt ) {
+                ?>
+                <tr
+                    class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <?php 
+                            echo $clt['id'];
+                        ?>
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Date de Naissance:
-                </th>
-                <td class="px-6 py-4">
-                    2001-02-07
-                </td>
+                    </th>
+                    <td class="px-6 py-4">
+                        <?php 
+                           echo $clt['username'];
+                        ?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <?php 
+                            echo $clt['date_de_naissance'];
+                        ?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <?php 
+                            echo $clt['nationalite'];
+                        ?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <?php 
+                            echo $clt['genre'];
+                        ?>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="affichageCompte.php?client_id=<?= $clt['id']; ?>"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">show compte
+                        </a>
+                    </td>
+                </tr>
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Nationalite:
-                </th>
-                <td class="px-6 py-4">
-                    Maroc
-                </td>
+                <?php 
+                }
+                ?>
 
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    GENRE:
-                </th>
-                <td class="px-6 py-4">
-                    homme
-                </td>
-
-            </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Address:
-                </th>
-                <td class="px-6 py-4">
-                    agdir...........
-                </td>
-
-            </tr>
-
-
+            </tbody>
         </table>
     </div>
-
     <!--footer-->
 
     <footer class=" bg-white dark:bg-blue-200">

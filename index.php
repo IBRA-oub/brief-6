@@ -6,7 +6,7 @@ $password= '';
 $database= "cihbank";
 
 
-$cnx= new mysqli($server,$username,$password,$database);
+ $cnx= new mysqli($server,$username,$password,$database);
 
 // if($cnx->connect_error){
 //     echo "Error connecting ";
@@ -100,8 +100,21 @@ $distributeur="CREATE TABLE IF NOT EXISTS`distributeur`(
 //$cnx->query($distributeur);
 
 
+function getclients(){
 
+    session_start();
+    global $cnx;
 
+    $row = $_SESSION["id"];
 
+    $sql = "SELECT * FROM user WHERE id = $row";
+    
+    $result = mysqli_query($cnx,$sql);
 
-?>
+    $data_clients=$result->fetch_all(MYSQLI_ASSOC);
+    
+    return $data_clients;
+    
+    }
+
+ ?>

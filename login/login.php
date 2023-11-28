@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 include('../index.php');
 
 
@@ -12,6 +15,12 @@ if(isset($_POST['login'])){
 
     if(mysqli_num_rows($result)>0){
         $row = mysqli_fetch_assoc($result);
+
+        $_SESSION  ["id"] = $row["id"];
+        $_SESSION ["username"] = $row["username"];
+        $_SESSION ["date_de_naissance"] = $row["date_de_naissance"];
+        $_SESSION ["nationalite"] = $row["nationalite"];
+        $_SESSION ["genre"] = $row["genre"];
         
         if ($row['role'] === "admin"){
            

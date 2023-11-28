@@ -24,7 +24,7 @@
                 <li class="pr-5 hover:text-amber-500"><a href="#" class="px-5 py-1 text-amber-500  ">Information</a>
                 </li>
 
-                <li class="pr-5 hover:text-amber-500"><a href="../adminClinet/adminClinet.php">
+                <li class="pr-5 hover:text-amber-500"><a href="../adminClient/adminClient.php">
                         Client</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminCompte/adminCompte.php">Comptes</a></li>
                 <li class="pr-5 hover:text-amber-500"><a href="../adminTransaction/adminTransaction.php">Transaction</a>
@@ -65,7 +65,7 @@
                     UseNamer:
                 </th>
                 <td class="px-6 py-4">
-                    Brahim oubourrih
+                    brahim
                 </td>
 
             </tr>
@@ -96,15 +96,7 @@
                 </td>
 
             </tr>
-            <tr class="bg-white dark:bg-white">
-                <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-                    Address:
-                </th>
-                <td class="px-6 py-4">
-                    agdir...........
-                </td>
 
-            </tr>
 
 
         </table>

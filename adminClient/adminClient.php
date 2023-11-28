@@ -11,7 +11,7 @@ if(isset($_POST['ajout_client'])){
     $agence=$_POST['agenceid'];
     $address=$_POST['address'];
     $email=$_POST['email'];
-    $password= password_hash($_POST['password'], PASSWORD_BCRYPT);
+    $password= $_POST['password'];
     
     
     if(empty($nom) || empty($datenaissance) || empty($nationalite) || empty($genre) || empty($codepostale) || empty($telephone) ||empty($agence) || empty($address) || empty($email) || empty($password)){
