@@ -30,7 +30,21 @@ $compteDataAdd=mysqli_query($cnx,$showcompte);
 $somthing="SELECT * FROM user";
 $userData=mysqli_query($cnx, $somthing);
 
+//======================================suppression==================
+if(isset($_POST['submits'])){
+    $id=$_POST['id'];
+    $sql="DELETE FROM compte WHERE id = $id";
+    $delet=mysqli_query($cnx,$sql);
 
+    // Check if the deletion was successful
+    if ($delet) {
+        echo "<script>window.alert('compte supprimé avec succès')</script>";
+        // Redirect to the same page after the deletion
+        echo "<script>window.location.href='adminCompte.php';</script>";
+    } else {
+        echo "<script>window.alert('Erreur lors de la suppression du client : " . mysqli_error($cnx) . "')</script>";
+    }
+}
 
 
 ?>
@@ -184,9 +198,11 @@ $userData=mysqli_query($cnx, $somthing);
                     </td>
 
                     <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
+                        <form method="post" action="">
+                            <input type="hidden" name="id" value="<?php echo $cpt['id']; ?>">
+                            <button type="submit" name="submits"
+                                class="px-5 py-1 rounded bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer</button>
+                        </form>
                     </td>
                     <td class="px-6 py-4">
                         <a href="#"

@@ -1,3 +1,74 @@
+<?php
+
+include ('../index.php');
+
+if(isset($_POST['addAgence'])){
+    $longitude=$_POST['longitude'];
+    $latitude=$_POST['latitude'];
+    $codepostale=$_POST['codepostale'];
+    $telephone=$_POST['telephone'];
+    $address=$_POST['address'];
+    $email=$_POST['email'];
+
+
+    if(empty($longitude) || empty($latitude) || empty($codepostale) || empty($address) || empty($email) ){
+        echo "<script>alert('Tous les champs doivent être remplis')</script>";
+    }else{
+
+
+        $sql="INSERT INTO `agence`(`longitude`, `latitude`)
+        VALUES ('$longitude', '$latitude')
+        ";
+   
+        $result=mysqli_query($cnx,$sql);
+
+        if($result){
+
+            $agence_id=mysqli_insert_id($cnx);
+    
+            $runQuery="INSERT INTO `addresses` (`email`,`adresse`,`code_postal`,`tele`,`agence_id`)
+            VALUES ('$email','  $address','$codepostale','$telephone','$agence_id')
+         ";
+    
+            $resultAddress=mysqli_query($cnx,$runQuery);
+           
+    
+            if ($resultAddress) {
+                echo "<script>window.alert('Data Inserted Successfully')</script>";
+            } else {
+                echo "<script>window.alert('Erreur lors de l\'insertion de l\'adresse')</script>";
+            }
+         
+         }else{
+            echo "<script>window.alert('Erreur lors de l\'insertion de l\'utilisateur')</script>";
+    
+         }
+
+
+        
+    }
+}
+
+$showAgence = "SELECT addresses.*, agence.*  FROM agence  LEFT JOIN addresses ON agence.id = addresses.agence_id";
+$agenceData = mysqli_query($cnx, $showAgence);
+
+
+//======================================suppression==================
+if(isset($_POST['submits'])){
+    $id=$_POST['id'];
+    $sql="DELETE FROM agence WHERE id = $id";
+    $delet=mysqli_query($cnx,$sql);
+
+    // Check if the deletion was successful
+    if ($delet) {
+        echo "<script>window.alert('agence supprimé avec succès')</script>";
+        // Redirect to the same page after the deletion
+        echo "<script>window.location.href='adminAgence.php';</script>";
+    } else {
+        echo "<script>window.alert('Erreur lors de la suppression du agence : " . mysqli_error($cnx) . "')</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +116,7 @@
 
     <!--add-form-->
     <div class="w-full py-10 ">
-        <form class="max-w-md mx-auto ">
+        <form method="POST" class="max-w-md mx-auto ">
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="number" name="longitude" id="longitude"
@@ -64,7 +135,7 @@
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="codepostale" id="codepostale"
+                    <input type="number" name="codepostale" id="codepostale"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
                     <label for="codepostale"
@@ -90,17 +161,17 @@
             </div>
 
             <div class="relative z-0 w-full mb-5 group">
-                <input type="email" name="floating_email" id="floating_email"
+                <input type="email" name="email" id="email"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
-                <label for="floating_email"
+                <label for="email"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
                     address</label>
             </div>
 
-            <button type="submit"
-                class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">Ajout
-                Agence
+            <button type="submit" name="addAgence"
+                class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">ajout
+                agence
             </button>
         </form>
 
@@ -146,84 +217,57 @@
             </thead>
             <tbody>
 
+                <?php
+                foreach($agenceData as $agence){
+                ?>
 
                 <tr class=" bg-white dark:bg-white border-b border-slate-700">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
-                        1
+                        <?php
+                        echo $agence['id'];
+                        ?>
                     </th>
                     <td class="px-6 py-4">
-                        123456123
+                        <?php
+                        echo $agence['longitude'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        1234561234
+                        <?php
+                        echo $agence['latitude'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        8088
+                        <?php
+                        echo $agence['code_postal'];
+                        ?>
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        +212 12345543
+                        <?php
+                        echo $agence['tele'];
+                        ?>
 
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap">
-                        AGDIRe rue123
+                        <?php
+                        echo $agence['adresse'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        exemple@gmail.com
+                        <?php
+                        echo $agence['email'];
+                        ?>
                     </td>
 
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
 
 
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
                     <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        +212 12345543
-
-                    </td>
-                    <td class="px-6 py-4">
-                        AGDIRe rue123
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
+                        <form method="post" action="">
+                            <input type="hidden" name="id" value="<?php echo $agence['id']; ?>">
+                            <button type="submit" name="submits"
+                                class="px-5 py-1 rounded bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer</button>
+                        </form>
                     </td>
                     <td class="px-6 py-4">
                         <a href="#"
@@ -232,93 +276,10 @@
                     </td>
                 </tr>
 
+                <?php
+                }
+                ?>
 
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        +212 12345543
-
-                    </td>
-                    <td class="px-6 py-4">
-                        AGDIRe rue123
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        +212 12345543
-
-                    </td>
-                    <td class="px-6 py-4">
-                        AGDIRe rue123
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show Deistributeur
-                        </a>
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
 
 
 

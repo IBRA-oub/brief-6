@@ -90,6 +90,7 @@ $distributeur="CREATE TABLE IF NOT EXISTS`distributeur`(
     id int PRIMARY KEY AUTO_INCREMENT,
     longitude int NOT NULL,
     latitude int NOT NULL,
+    address varchar(250) NOT NULL,
     agence_id int ,
    FOREIGN KEY (agence_id) REFERENCES agence(id) ON DELETE CASCADE 
     

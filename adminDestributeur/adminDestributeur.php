@@ -1,3 +1,56 @@
+<?php
+
+include ('../index.php');
+
+if (isset($_POST['addDestributeur'])) {
+    $agenceId = $_POST['agenceId'];
+    
+    // echo $rib;
+    $longitude=$_POST['longitude'];
+    $latitude = $_POST['latitude'];
+    $addresse = $_POST['address'];
+
+    if (empty($longitude) ||empty($latitude) || empty($addresse)) {
+        echo "<script>window.alert('Inputs should not be empty');</script>";
+    } else {
+
+        $query = "
+            INSERT INTO distributeur (longitude,  latitude, address,  agence_id )
+            VALUES ('$longitude',  ' $latitude','$addresse ', '$agenceId ');
+        ";
+
+        $run_query = mysqli_query($cnx, $query);
+        echo "<script>window.alert('Transaction Added succesfuly');</script>";
+
+    }
+}
+
+$showDestributeur="SELECT * FROM distributeur";
+$distributeurDataAdd=mysqli_query($cnx,$showDestributeur);
+
+
+
+$agencesomthing="SELECT * FROM agence";
+$agenceData=mysqli_query($cnx, $agencesomthing);
+
+
+
+//======================================suppression==================
+if(isset($_POST['submits'])){
+    $id=$_POST['id'];
+    $sql="DELETE FROM distributeur WHERE id = $id";
+    $delet=mysqli_query($cnx,$sql);
+
+    // Check if the deletion was successful
+    if ($delet) {
+        echo "<script>window.alert('distributeur supprimé avec succès')</script>";
+        // Redirect to the same page after the deletion
+        echo "<script>window.location.href='adminDestributeur.php';</script>";
+    } else {
+        echo "<script>window.alert('Erreur lors de la suppression du distributeur : " . mysqli_error($cnx) . "')</script>";
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +97,7 @@
 
     <!--add-form-->
     <div class="w-full py-10 ">
-        <form class="max-w-md mx-auto ">
+        <form method="POST" class="max-w-md mx-auto ">
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
                     <input type="number" name="longitude" id="longitude"
@@ -62,14 +115,7 @@
                 </div>
             </div>
 
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="codepostale" id="codepostale"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required />
-                <label for="codepostale"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">code
-                    postal</label>
-            </div>
+
 
 
 
@@ -84,9 +130,18 @@
                 </label>
             </div>
 
+            <select name="agenceId"
+                class="w-full pl-2 my-5  rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+                <option value="0">Choose Agence to Create An Destributeur </option>
+                <?php
 
+                        foreach($agenceData as $agence) {
+                            echo "<option value='" . $agence['id'] . "' > ID:" . $agence['id'] . "</option>";
+                        }
+                    ?>
+            </select>
 
-            <button type="submit"
+            <button type="submit" name="addDestributeur"
                 class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">Ajout
                 Destributeur
             </button>
@@ -111,9 +166,6 @@
                     <th scope="col" class="px-6 py-3">
                         latitude
                     </th>
-                    <th scope="col" class=" px-6 py-3 whitespace-nowrap">
-                        code Postale
-                    </th>
                     <th scope="col" class="px-6 py-3">
                         address
                     </th>
@@ -126,29 +178,40 @@
             </thead>
             <tbody>
 
+                <?php
+                foreach($distributeurDataAdd as $dest){
+                ?>
 
                 <tr class=" bg-white dark:bg-white border-b border-slate-700">
                     <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
-                        1
+                        <?php
+                        echo $dest['id'];
+                        ?>
                     </th>
                     <td class="px-6 py-4">
-                        123456123
+                        <?php
+                        echo $dest['longitude'];
+                        ?>
                     </td>
                     <td class="px-6 py-4">
-                        1234561234
+                        <?php
+                        echo $dest['latitude'];
+                        ?>
                     </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
+
                     <td class="px-6 py-4 whitespace-nowrap">
-                        AGDIRe rue123
+                        <?php
+                        echo $dest['address'];
+                        ?>
                     </td>
 
                     <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
+                        <form method="post" action="">
+                            <input type="hidden" name="id" value="<?php echo $dest['id']; ?>">
+                            <button type="submit" name="submits"
+                                class="px-5 py-1 rounded bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer</button>
+                        </form>
                     </td>
                     <td class="px-6 py-4">
                         <a href="#"
@@ -156,100 +219,10 @@
                         </a>
                     </td>
                 </tr>
+                <?php
+                }
+                ?>
 
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        AGDIRe rue123
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        AGDIRe rue123
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        123456123
-                    </td>
-                    <td class="px-6 py-4">
-                        1234561234
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        AGDIRe rue123
-                    </td>
-
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
 
 
 
