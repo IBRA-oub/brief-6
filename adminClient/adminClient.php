@@ -1,3 +1,117 @@
+<?php
+include ('../index.php');
+
+if(isset($_POST['ajout_client'])){
+    $nom=$_POST['username'];
+    $datenaissance=$_POST['datenaissance'];
+    $nationalite=$_POST['nationalite'];
+    $genre=$_POST['genre'];
+    $codepostale=$_POST['codepostale'];
+    $telephone=$_POST['telephone'];
+    $address=$_POST['address'];
+    $email=$_POST['email'];
+    $password= password_hash($_POST['password'], PASSWORD_BCRYPT);
+    
+    
+    if(empty($nom) || empty($datenaissance) || empty($nationalite) || empty($genre) || empty($codepostale) || empty($telephone) || empty($address) || empty($email) || empty($password)){
+        echo "<script>alert('Tous les champs doivent être remplis')</script>";
+    }else{
+    
+    
+    $sql="INSERT INTO `user`(`username`, `date_de_naissance`, `nationalite`, `genre`, `password`, `role`)
+     VALUES ('$nom', '$datenaissance', '$nationalite', '$genre', '$password', 'client')
+     ";
+
+     $result=mysqli_query($cnx,$sql);
+     
+     if($result){
+
+        $user_id=mysqli_insert_id($cnx);
+
+        $runQuery="INSERT INTO `addresses` (`email`,`adresse`,`code_postal`,`tele`,`user_id`) VALUES 
+        ('$email','  $address','$codepostale','$telephone','$user_id')
+     ";
+
+        $resultAddress=mysqli_query($cnx,$runQuery);
+
+        if ($resultAddress) {
+            echo "<script>window.alert('Data Inserted Successfully')</script>";
+        } else {
+            echo "<script>window.alert('Erreur lors de l\'insertion de l\'adresse')</script>";
+        }
+     
+     }else{
+        echo "<script>window.alert('Erreur lors de l\'insertion de l\'utilisateur')</script>";
+
+     }
+    
+    }
+    
+    
+  
+}
+
+// $showUsers="SELECT * FROM user";
+// $userData=mysqli_query($cnx,$showUsers);
+
+// $showaddress="SELECT * FROM addresses";
+// $userDataAdd=mysqli_query($cnx,$showaddress);
+
+$showUsers = "SELECT addresses.*, user.*  FROM addresses LEFT JOIN user ON user.id = addresses.user_id";
+$userData = mysqli_query($cnx, $showUsers);
+
+// $showUsers = "SELECT user.id, addresses.* FROM user LEFT JOIN addresses ON user.id = addresses.user_id";
+// $userData = mysqli_query($cnx, $showUsers);
+
+//===================================suppresion===========================
+
+
+if(isset($_POST['submits'])){
+    $id=$_POST['id'];
+    $sql="DELETE FROM user WHERE id = $id";
+    $delet=mysqli_query($cnx,$sql);
+
+    // Check if the deletion was successful
+    if ($delet) {
+        echo "<script>window.alert('Client supprimé avec succès')</script>";
+        // Redirect to the same page after the deletion
+        echo "<script>window.location.href='adminClient.php';</script>";
+    } else {
+        echo "<script>window.alert('Erreur lors de la suppression du client : " . mysqli_error($cnx) . "')</script>";
+    }
+}
+//=================================update=================================
+
+if (isset($_POST['submitu'])) {
+    $user_id = $_POST['user_id'];
+    
+
+    // Update the specified fields in the database
+    $updateQuery = "UPDATE user SET
+                    username = '$nom',
+                    date_de_naissance = '$datenaissance',
+                    nationalite = '$nationalite',
+                    genre = '$genre',
+                    password = '$password',
+                    email = '$email',
+                    address = '$address',
+                    code_postal = '$codepostale',
+                    tele = '$telephone'
+                    WHERE id = $user_id";
+
+    $updateResult = mysqli_query($cnx, $updateQuery);
+
+    if ($updateResult) {
+        echo "<script>window.alert('Mise à jour réussie')</script>";
+    } else {
+        echo "<script>window.alert('Erreur lors de la mise à jour : " . mysqli_error($cnx) . "')</script>";
+    }
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,28 +160,20 @@
 
     <!--add-form-->
     <div class="w-full py-10 ">
-        <form class="max-w-md mx-auto ">
-            <div class="grid md:grid-cols-2 md:gap-6">
-                <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" name="floating_first_name" id="floating_first_name"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="floating_first_name"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">First
-                        name</label>
-                </div>
-                <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" name="floating_last_name" id="floating_last_name"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                        placeholder=" " required />
-                    <label for="floating_last_name"
-                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Last
-                        name</label>
-                </div>
+        <form class="max-w-md mx-auto " method="post">
+
+
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="text" name="username" id="username"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="username"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">username</label>
             </div>
+
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="text" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" name="datenaissance" id="datenaissance"
+                    <input type="date" name="datenaissance" id="datenaissance"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
                     <label for="datenaissance"
@@ -110,17 +216,17 @@
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                 <label for="address"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">telephone</label>
-            </div>
-            <div class="relative z-0 w-full mb-5 group">
-                <input type="tele" name="telephone" id="telephone"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                    placeholder=" " required />
-                <label for="telephone"
                     class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">address</label>
             </div>
             <div class="relative z-0 w-full mb-5 group">
-                <input type="email" name="floating_email" id="floating_email"
+                <input type="tel" name="telephone" id="telephone"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" " required />
+                <label for="telephone"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">telephone</label>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input type="email" name="email" id="floating_email"
                     class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" " required />
                 <label for="floating_email"
@@ -129,7 +235,7 @@
             </div>
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-5 group">
-                    <input type="password" name="floating_password" id="floating_password"
+                    <input type="password" name="password" id="floating_password"
                         class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-blue-400 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                         placeholder=" " required />
                     <label for="floating_password"
@@ -144,8 +250,9 @@
                         password</label>
                 </div>
             </div>
-            <button type="submit"
-                class="w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm   px-5 py-2.5 text-center  dark:focus:ring-blue-800">Ajout
+            <button type="submit" name="ajout_client" class=" w-full text-white bg-blue-500 hover:bg-amber-500 focus:ring-4 focus:outline-none
+                focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center
+                dark:focus:ring-blue-800">Ajout
                 CLient
             </button>
         </form>
@@ -155,257 +262,147 @@
 
     <!-- client-info-admin-->
     <div class="relative overflow-x-auto shadow-md ">
-        <table class="w-full text-sm text-left rtl:text-right text-black  border-t-4 border-slate-700">
-            <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-black">
+        <form method="post" action="">
+            <table class="w-full text-sm text-left rtl:text-right text-black  border-t-4 border-slate-700">
+                <thead class="text-xs  uppercase bg-gray-50 dark:bg-gray-700 text-black">
 
 
-                <tr class="bg-white dark:bg-white border-b border-slate-700 ">
-                    <th scope="col" class="px-6 py-3">
-                        ID
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        nom
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        prenom
-                    </th>
-                    <th scope="col" class="px-10 py-3">
-                        date de naissance
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        nationalité
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        genre
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        address
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        codePostal
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        tele
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        email
-                    </th>
-                    <th scope="col" class="px-20 py-3">
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                    </th>
-                    <th scope="col" class="px-20 py-3">
-                    </th>
+                    <tr class="bg-white dark:bg-white border-b border-slate-700 ">
+                        <th scope="col" class="px-6 py-3">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            username
+                        </th>
 
-                </tr>
-            </thead>
-            <tbody>
+                        <th scope="col" class="px-10 py-3">
+                            date de naissance
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            nationalité
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            genre
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            address
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            codePostal
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            tele
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            email
+                        </th>
+                        <th scope="col" class="px-20 py-3">
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                        </th>
+                        <th scope="col" class="px-20 py-3">
+                        </th>
 
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                foreach($userData as $user){
+                ?>
 
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
+                    <tr class=" bg-white dark:bg-white border-b border-slate-700">
 
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        OUBOURRIH
-                    </td>
-                    <td class="px-6 py-4">
-                        BRAHIM
-                    </td>
-                    <td class="px-6 py-4">
-                        2001-02-07
-                    </td>
-                    <td class="px-6 py-4">
-                        MAROC
+                        <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
 
-                    </td>
-                    <td class="px-6 py-4">
-                        HOMME
-                    </td>
-                    <td class="px-6 py-4">
-                        AGADIR
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        09876544
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
+                            <?php
+                        echo $user['id'];
+                        ?>
+                        </th>
+                        <td class="px-6 py-4">
+                            <?php
+                        echo $user['username'];
+                        ?>
+                        </td>
+                        <td class="px-6 py-4">
+                            <?php
+                        echo $user['date_de_naissance'];
+                        ?>
+                        </td>
+                        <td class="px-6 py-4">
+                            <?php
+                        echo $user['nationalite'];
+                        ?>
 
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        OUBOURRIH
-                    </td>
-                    <td class="px-6 py-4">
-                        BRAHIM
-                    </td>
-                    <td class="px-6 py-4">
-                        2001-02-07
-                    </td>
-                    <td class="px-6 py-4">
-                        MAROC
-
-                    </td>
-                    <td class="px-6 py-4">
-                        HOMME
-                    </td>
-                    <td class="px-6 py-4">
-                        AGADIR
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        09876544
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded   bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        OUBOURRIH
-                    </td>
-                    <td class="px-6 py-4">
-                        BRAHIM
-                    </td>
-                    <td class="px-6 py-4">
-                        2001-02-07
-                    </td>
-                    <td class="px-6 py-4">
-                        MAROC
-
-                    </td>
-                    <td class="px-6 py-4">
-                        HOMME
-                    </td>
-                    <td class="px-6 py-4">
-                        AGADIR
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        09876544
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded   bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
-
-
-                <tr class=" bg-white dark:bg-white border-b border-slate-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-black whitespace-nowrap ">
-
-                        1
-                    </th>
-                    <td class="px-6 py-4">
-                        OUBOURRIH
-                    </td>
-                    <td class="px-6 py-4">
-                        BRAHIM
-                    </td>
-                    <td class="px-6 py-4">
-                        2001-02-07
-                    </td>
-                    <td class="px-6 py-4">
-                        MAROC
-
-                    </td>
-                    <td class="px-6 py-4">
-                        HOMME
-                    </td>
-                    <td class="px-6 py-4">
-                        AGADIR
-                    </td>
-                    <td class="px-6 py-4">
-                        8088
-                    </td>
-                    <td class="px-6 py-4">
-                        09876544
-                    </td>
-                    <td class="px-6 py-4">
-                        exemple@gmail.com
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#" class="font-medium text-blue-600  hover:underline">show compte
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded   bg-amber-500 hover:bg-red-700  font-medium text-white">supprimer
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        <a href="#"
-                            class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">mise a jour
-                        </a>
-                    </td>
-                </tr>
+                        </td>
+                        <td class="px-6 py-4">
+                            <?php
+                        echo $user['genre'];
+                        ?>
+                        </td>
 
 
 
 
-            </tbody>
-        </table>
+
+                        <td class="px-6 py-4 whitespace-nowrap ">
+                            <?php
+                        echo $user['adresse'];
+                        
+                        ?>
+                        </td>
+                        <td class="px-6 py-4">
+                            <?php
+                         echo $user['code_postal'];
+                        
+                        ?>
+                        </td>
+
+                        <td class="px-6 py-4">
+                            <?php
+                        echo $user['tele'];
+                        ?>
+                        </td>
+                        <td class="px-6 py-4">
+                            <?php
+                        echo $user['email'];
+                        ?>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="#" class="font-medium text-blue-600  hover:underline">show compte
+                            </a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <form method="post" action="">
+                                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                                <button type="submit" name="submits"
+                                    class="px-5 py-1 rounded bg-amber-500 hover:bg-red-700 font-medium text-white">supprimer</button>
+                            </form>
+                        </td>
+
+                        <td class="px-6 py-4">
+                            <form action="" methode="post">
+                                <input type="hidden" name="user_id" id="user_id" value="<?php echo $user['id']; ?>">
+
+                                <button type="submit" name="submitu"
+                                    class="px-5 py-1 rounded  bg-blue-500 hover:bg-blue-700  font-medium text-white">
+                                    mise a
+                                    jour
+                                </button>
+                            </form>
+                        </td>
+
+                    </tr>
+                    <?php
+                        }
+                        ?>
+
+
+
+
+
+                </tbody>
+            </table>
+        </form>
     </div>
     <!-- client-info-admin-end-->
 

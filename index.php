@@ -48,7 +48,7 @@ $addresses="CREATE TABLE IF NOT EXISTS `addresses`(
     code_postal int NOT NULL,
     tele int NOT NULL,
     user_id int ,
-    FOREIGN KEY(user_id) REFERENCES user(id)
+    FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE
 
     
 );
@@ -57,12 +57,8 @@ $addresses="CREATE TABLE IF NOT EXISTS `addresses`(
 //$cnx->query($addresses);
 
 
-$inserUserData="INSERT INTO `user` (username, date_de_naissance, nationalite, genre, password, role)
-VALUE
-('brahim','2001-02-07','marocan','homme','brahim123','admin'),
-('yassine','2001-02-07','marocan','homme','yassine123','client')
-";
 
-//$cnx->query($inserUserData);
+
+
 
 ?>
